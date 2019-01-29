@@ -5,7 +5,7 @@ import 'plot3d.dart';
 import 'params.dart';
 
 main() {
-	ex2DMulti();
+	
 }
 
 void ex2D() => plot(
@@ -32,8 +32,7 @@ void ex2DMulti() => multiplot(
 			)
 		],
 		scale:2,
-		out:'multi2d',
-		sameGraph:true
+		out:'multi2d'
 	);
 
 void ex3D() => 	plot3d(

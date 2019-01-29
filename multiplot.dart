@@ -6,13 +6,13 @@ void multiplot(
 		var rows=1,
 		var cols=1,
 		var format='png',
-		var out="out2d",
+		var out="outMulti",
 		var width=640,
 		var height=480,
 		var scale=1,
-		var sameGraph=false,
 	})
 {
+	var sameGraph = rows==1&&cols==1;
 	var str = "" +
 	"set terminal $format size ${width*scale},${height*scale};" +
 	"set output '$out.$format';";
@@ -38,7 +38,7 @@ void multiplot(
 		"set title \" ${plots[0].labels.title }\";"+
 		"plot [${plots[0].frm}:${plots[0].to}] ";
 		for( var i=0; i<plots.length; i++)
-			str += "${plots[i].exp} with ${plots[i].style}, ";
+			str += "${plots[i].exp} with ${plots[i].style} lt rgb '${plots[i].color}' lw ${plots[i].lineWidth}, ";
 			
 		str += ";";
 	}

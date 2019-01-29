@@ -50,6 +50,8 @@ class Plot {
 	var showZeroX;
 	var showZeroY;
 	var showGrid;
+	var lineWidth;
+	var color;
 	
 	Plot(
 		this.exp, {
@@ -60,7 +62,9 @@ class Plot {
 		this.style=Styles.lines,
 		this.showZeroX=true,
 		this.showZeroY=true,
-		this.showGrid=false
+		this.showGrid=false,
+		this.lineWidth=1,
+		this.color='blue'
 		}) {
 			exp = exp.replaceAll('^','**');
 		}
@@ -76,5 +80,5 @@ class Plot {
 		"set xlabel \"${labels.xlabel}\";"+
 		"set ylabel \"${labels.ylabel}\";"+
 		"set title \" ${labels.title }\";"+
-		"plot [$frm:$to] $exp with $style;";
+		"plot [$frm:$to] $exp with $style lt rgb '$color' lw $lineWidth;";
 }
