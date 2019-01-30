@@ -11,7 +11,7 @@ See examples below
 
 * Options
 
-Depending on the type of graph, optional parameters can be passed, like linewidth, labels, output format...
+Depending on the type of graph, optional parameters can be passed, like linewidth, labels, colors, output format...
 
 
 ________
@@ -30,12 +30,12 @@ main() {
 Now with some options :
 ``` 
 main() {
-	plot('x^2',
-		style:Styles.impulses,
-		nbPoints:2000,
-		color:'purple',
-		showGrid:true
-	);
+  plot('x^2',
+    style:Styles.impulses,
+    nbPoints:2000,
+    color:'purple',
+    showGrid:true
+  );
 }
 ```
 ![x^2_2](examples/x^2_2.png)
