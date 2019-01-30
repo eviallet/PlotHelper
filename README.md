@@ -100,7 +100,7 @@ main() {
 
 ``` 
 main() {
-  bode('1/(1+p/10)');
+  bode('(1-s)/((1+s)*(1-2*s))');
 }
 ``` 
 
@@ -109,10 +109,14 @@ main() {
 ``` 
 main() {
   bode(
-    '(s+1)/((s-1)*(s-2))',
-    laplace:'s'		
+    fromCoefs(
+      [2.008, 0, 0, 0, 0],
+      [1, 1.307, 4.854, 4.249, 7.768, 4.249, 4.854, 1.307, 1]
+    ),
+    frm:1e-4,
+    to:1e4
   );
 }
 ``` 
 
-![bode_s](examples/bode_s.png)
+![bode_bandpass](examples/bode_bandpass.png)
