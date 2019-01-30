@@ -5,7 +5,7 @@ import 'params.dart';
 
 void bode(
 		var exp, {
-		var laplace='p',
+		var laplace='s',
 		var format='png',
 		var labels=Labels.defaultLabels(),
 		var frm=0.01,
@@ -23,7 +23,7 @@ void bode(
 	"set terminal $format size ${width*scale},${height*scale};" +
 	"set output '$out.$format';"+
 	
-	"A($laplace) = $exp ;"+
+	"A($laplace) = $exp;"+
 	"set dummy $laplace;"+
 	
 	"set multiplot layout 2,1;"+
@@ -33,6 +33,7 @@ void bode(
 	"set xrange [$frm : $to];"+
 	"set ytics nomirror;"+
 	"set autoscale y;"+
+	"set xzeroaxis;"+
 	"set format x '';"+
 	
 	"set tmargin at screen 0.95;"+
@@ -43,18 +44,34 @@ void bode(
 	
 	"plot 20*log10(abs(A($laplace)));"+
 	
-	"set format x '10^{%S}';"+
+	"set format x '10^{%L}';"+
 	"set tmargin at screen 0.49;"+
 	"set bmargin at screen 0.05;"+
 	"set xlabel \"${labels.xlabel}\";"+
 	"set ylabel \"${labels.xlabel}\";"+
 	"plot 180/pi*arg(A($laplace));"+
-	
+
 	"unset multiplot;"+
 	"set output;";
-	
+		
 	
 	Process.start('gnuplot', ["-e", str]);
 }
 
+String fromCoefs(
+	var num,
+	var den) 
+{
+	var str = "(";
+	for ( var i = 0; i<num.length-1; i++)
+		str+="${num[i]}*s**${num.length-1-i}+";
+	str+=(num[num.length-1]==0?'0':'1');
+	str += ")/(";
+	for ( var i = 0; i<den.length-1; i++)
+		str+="${den[i]}*s**${den.length-1-i}+";
+	str+=(den[den.length-1]==0?'0':'1');
+	str += ")";
+	
+	return str;
+}
 

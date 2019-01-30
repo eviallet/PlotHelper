@@ -5,7 +5,7 @@ import 'plot3d.dart';
 import 'params.dart';
 
 main() {
-	
+
 }
 
 void ex2D() => plot(
@@ -50,6 +50,14 @@ void ex3DFile() => plot3d(
 	);
 	
 void exBode() => bode(
-		'(1/(1+p/10)) * (1/(1+p/10000))',
+		'(1/(1+s/10)) * (1/(1+s/10000))',
 		scale:1.5
+	);
+void exBodeFromCoef() => bode(
+		fromCoefs(
+			[2.008, 0, 0, 0, 0],
+			[1, 1.307, 4.854, 4.249, 7.768, 4.249, 4.854, 1.307, 1]
+		),
+		frm:1e-4,
+		to:1e4
 	);
