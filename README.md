@@ -20,7 +20,7 @@ ________
 
 * Simplest graph
 
-``` 
+```dart
 main() {
   plot('x^2');
 }
@@ -28,7 +28,7 @@ main() {
 ![x^2](examples/x^2.png)
 
 Now with some options :
-``` 
+``` dart
 main() {
   plot('x^2',
     style:Styles.impulses,
@@ -42,7 +42,7 @@ main() {
 
 * Multiple plots
 
-``` 
+``` dart
 main() {
   multiplot(
     [
@@ -67,7 +67,7 @@ main() {
 
 * 3D plot
 
-``` 
+``` dart
 main() {
   plot3d(
       'cos(x)*sin(y)',
@@ -85,7 +85,7 @@ main() {
 
 * Plot from a file
 
-``` 
+``` dart
 main() {
   plot3d(
     'plt.dat',
@@ -98,7 +98,7 @@ main() {
 
 * Bode plot
 
-``` 
+``` dart
 main() {
   bode('(1-s)/((1+s)*(1-2*s))');
 }
@@ -106,7 +106,7 @@ main() {
 
 ![bode](examples/bode.png)
 
-``` 
+``` dart
 main() {
   bode(
     fromCoefs(
